@@ -49,6 +49,7 @@ python3 main_pretrain.py \
     --config-name ncl.yaml
 ```
 
+```bash
 # SAE (Mono)
 python3 main_sparse.py \
     --config-path scripts/pretrain/cifar \
@@ -68,6 +69,7 @@ python3 main_pretrain.py \
     --config-name ncl.yaml
 ```
 
+```bash
 # SAE (Mono)
 python3 main_sparse.py \
     --config-path scripts/pretrain/imagenet-100 \
@@ -82,26 +84,29 @@ python3 main_sparse.py \
 
 After that, for linear evaluation with different noises, run the following command:
 
+
+```bash
 # Simclr (Mono)
-```bash
 python3 main_linear.py \
     --config-path scripts/linear/{dataset} \
-    --config-name simclr.yaml (simclr_label_noise.yaml, simclr_gaussian_noise.yaml, simclr_uniform_noise.yaml) \
-    pretrained_feature_extractor=path/to/pretrained/feature/extractor
-```
-# NCL (Mono)
-```bash
-python3 main_linear.py \
-    --config-path scripts/linear/{dataset} \
-    --config-name ncl.yaml (ncl_label_noise.yaml, ncl_gaussian_noise.yaml, ncl_uniform_noise.yaml) \
+    --config-name simclr_clean.yaml (simclr_label_noise.yaml, simclr_gaussian_noise.yaml, simclr_uniform_noise.yaml) \
     pretrained_feature_extractor=path/to/pretrained/feature/extractor
 ```
 
-# SAE (Mono)
 ```bash
+# NCL (Mono)
 python3 main_linear.py \
     --config-path scripts/linear/{dataset} \
-    --config-name ncl.yaml (sae_label_noise.yaml, sae_gaussian_noise.yaml, sae_uniform_noise.yaml) \
+    --config-name ncl_clean.yaml (ncl_label_noise.yaml, ncl_gaussian_noise.yaml, ncl_uniform_noise.yaml) \
+    pretrained_feature_extractor=path/to/pretrained/feature/extractor
+```
+
+
+```bash
+# SAE (Mono)
+python3 main_linear.py \
+    --config-path scripts/linear/{dataset} \
+    --config-name sae_clean.yaml (sae_label_noise.yaml, sae_gaussian_noise.yaml, sae_uniform_noise.yaml) \
     pretrained_feature_extractor=path/to/pretrained/feature/extractor
 ```
 
@@ -109,28 +114,38 @@ python3 main_linear.py \
 Here ``dataset={cifar,imagenet100}``. We use the argument ``pretrained_feature_extractor`` to configure the path of the pretrained checkpoints. We apply different noises (label noise, uniform and gaussain input noise) in different scripts. 
 
 
-## Full finetuning
+## Full Noisy Finetuning
 
-And for fine-tuning evaluation, run the following command:
+And for noisy fine-tuning evaluation, run the following command:
 
 
 ```bash
+# Simclr (Mono)
 python3 main_linear.py \
     --config-path scripts/finetuning/{dataset} \
-    --config-name simclr.yaml
+    --config-name simclr_clean.yaml (simclr_few_shot.yaml, simclr_label_noise.yaml) \
+    pretrained_feature_extractor=path/to/pretrained/feature/extractor
 ```
-
-## Feature Selection
-
-And for offline linear probing with selected dimensions, run the following command:
 
 ```bash
+# NCL (Mono)
 python3 main_linear.py \
-    --config-path scripts/selected \
-    --config-name simclr.yaml \
-    selected_dims=256
+    --config-path scripts/finetuning/{dataset} \
+    --config-name ncl_clean.yaml (ncl_label_noise.yaml, ncl_few_shot.yaml) \
+    pretrained_feature_extractor=path/to/pretrained/feature/extractor
 ```
-where the argument ``selected_dims`` configures the dimensions of selected features.
+
+
+```bash
+# SAE (Mono)
+python3 main_linear.py \
+    --config-path scripts/finetuning/{dataset} \
+    --config-name sae_clean.yaml (sae_label_noise.yaml, sae_few_shot.yaml) \
+    pretrained_feature_extractor=path/to/pretrained/feature/extractor
+```
+
+
+
 
 
 
@@ -155,17 +170,7 @@ The following table provides the pre-trained checkpoints for CL and NCL.
 
 
 
-## Citing this work
-If you find the work useful, please cite the accompanying paper:
-```
-@inproceedings{
-wang2024nonnegative,
-title={Non-negative Contrastive Learning},
-author={Yifei Wang and Qi Zhang and Yaoyu Guo and Yisen Wang},
-booktitle={ICLR},
-year={2024},
-}
-```
+
 
 ## Acknowledgement
 
