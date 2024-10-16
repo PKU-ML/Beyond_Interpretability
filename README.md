@@ -4,9 +4,15 @@ Official PyTorch implementation of the paper Beyond Interpretability: The Gains 
 
 
 
-## TLDR
 
 
+
+
+![image](visualization.png) 
+
+
+
+![image](results.png)
 
 
 
@@ -24,11 +30,11 @@ cd non_neg
 pip3 install .[dali,umap,h5] --extra-index-url https://developer.download.nvidia.com/compute/redist --extra-index-url https://download.pytorch.org/whl/cu113
 ```
 
-## Pretraining
+## Obtain Polysemantic/Monosemantic Representations
 
 Pretrain with the default configuration files using the following command.
 
-### CIFAR-100 / CIFAR-10
+### CIFAR-100 
 ```bash
 # SimCLR
 python3 main_pretrain.py \
@@ -39,8 +45,13 @@ python3 main_pretrain.py \
     --config-path scripts/pretrain/cifar \
     --config-name ncl.yaml
 ```
-<!-- Here, ``dataset={cifar, imagenet-100}`` and ``method={simclr, ncl}``. To config either ``cifar10`` or ``cifar100``, change or override the ``data.dataset`` property to either ``cifar10`` or ``cifar100``. -->
-The default setting is for CIFAR-100. For CIFAR-10, override ``data.dataset=cifar10``. Meanwhile, change the experiment name accordingly to avoid collision, e.g., ``name=simclr-resnet18-cifar10-ncl``. Other experiments follow the same setting.
+
+# SAE
+python3 main_pretrain.py \
+    --config-path scripts/pretrain/cifar \
+    --config-name sae.yaml
+```
+
 
 ### ImageNet-100
 ```bash
