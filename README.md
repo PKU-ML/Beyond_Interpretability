@@ -122,10 +122,7 @@ python3 main_linear.py \
     --config-path scripts/finetuning/{dataset} \
     --config-name ncl_clean.yaml (ncl_label_noise.yaml, ncl_few_shot.yaml) \
     pretrained_feature_extractor=path/to/pretrained/feature/extractor
-```
 
-
-```bash
 # SAE (Mono)
 python3 main_linear.py \
     --config-path scripts/finetuning/{dataset} \
@@ -146,12 +143,10 @@ The following table provides the pre-trained checkpoints for CL and NCL.
 <!-- START TABLE -->
 <!-- TABLE HEADER -->
 <th valign="bottom"></th>
-<th valign="bottom">CIFAR-10</th>
 <th valign="bottom">CIFAR-100</th>
 <th valign="bottom">ImageNet-100</th>
 <!-- TABLE BODY -->
 <tr><td align="left">checkpoints</td>
-<td align="center"><a href="https://drive.google.com/drive/folders/1z57D9WOZk5N5nsqVixkUza9ZX6NiH6Wx?usp=sharing">download</a></td>
 <td align="center"><a href="https://drive.google.com/drive/folders/1EbF9oKFu9rjsfRj_hv-Q-GVYKUSVxIkP?usp=sharing">download</a></td>
 <td align="center"><a href="https://drive.google.com/drive/folders/1iIqn2hklptrlG3bLmjULw_rfKKO-JC5s?usp=sharing">download</a></td>
 </tr>
