@@ -1,0 +1,70 @@
+defaults:
+  - _self_
+  - wandb: private.yaml
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+# disable hydra outputs
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+
+name: "linear-cifar100-base" # change here for cifar100
+method: "simclr"
+backbone:
+  name: "resnet18"
+method_kwargs:
+  proj_hidden_dim: 16384
+  proj_output_dim: 2048
+  temperature: 0.2
+  drop: 0.0
+  non_neg: None
+data:
+  dataset: cifar100 # change here for cifar100
+  train_path: "./data/qzhang"
+  val_path: "./data/qzhang"
+  format: "image_folder"
+  num_workers: 4
+  extra_data: None
+optimizer:
+  name: "lars"
+  batch_size: 256
+  lr: 0.4
+  classifier_lr: 0.1
+  weight_decay: 1e-4
+  kwargs:
+    clip_lr: True
+    eta: 0.02
+    exclude_bias_n_norm: True
+scheduler:
+  name: "warmup_cosine"
+checkpoint:
+  enabled: True
+  dir: "trained_models"
+  frequency: 1
+auto_resume:
+  enabled: True
+
+SAE: None
+non_neg: None
+noise_rate: 0.0
+uniform_noise: 0.2
+gaussian_noise: 0.0
+
+
+
+# overwrite PL stuff
+max_epochs: 50
+devices: [0]
+sync_batchnorm: True
+accelerator: "gpu"
+strategy: "ddp"
+precision: 16
+finetune: False
+pretrained_feature_extractor: path/to/pretrained/feature/extractor
+proj_h_dim : 4096
+proj_o_dim : 512
+
+
+
