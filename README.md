@@ -1,29 +1,12 @@
-# Non-negative Contrastive Learning
+# Beyond Interpretability: The Gains of Feature Monosemanticity on Model Robustness
 
-Official PyTorch implementation of the ICLR 2024 paper [Non-negative Contrastive Learning](https://arxiv.org/pdf/2403.12459) by  [Yifei Wang*](https://yifeiwang77.com/), Qi Zhang*, Yaoyu Guo, and [Yisen Wang](https://yisenwang.github.io/).
-
-Links: [Wandb Logs](https://wandb.ai/doxawang/non_neg) | [Checkpoints](https://github.com/PKU-ML/non_neg#pretrained-checkpoints)
+Official PyTorch implementation of the paper Beyond Interpretability: The Gains of Feature Monosemanticity on Model Robustness by Qi Zhang, [Yifei Wang*](https://yifeiwang77.com/), Jingyi Cui, Xiang Pan, Qi Lei, Stefanie Jegelka, [Yisen Wang](https://yisenwang.github.io/)
 
 
-**Updates**:
-
-- 2024.04.01. Add [logging of feature stats](https://github.com/PKU-ML/non_neg/blob/main/solo/methods/simclr.py) & [wandb pretraining logs](https://wandb.ai/doxawang/non_neg). With these stats, we can directly observe the differences between CL and NCL training.
-- 2024.03.19. Code is released. 🎉
 
 ## TLDR
 
-With non-negative constraints  on contrastive features, NCL can significantly enhance feature interpretability, sparsity, and disentanglement over standard contrastive learning, while improving (at least maintaining) its performance on classical tasks.
 
-![image](assets/img1.png)
-
-
-<!-- Non-negative Contrastive Learning (NCL) is a renaisense  new self-supervised learning method that -->
-
-For implementation, the difference between Contrastive Learning (CL) and Non-negative Contrastive learning (NCL) is minimal. Apart from argparser nuances, NCL only adds [one line](https://github.com/PKU-ML/non_neg/blob/main/solo/methods/simclr.py#L154) upon existing methods:
-```
-    z = torch.nn.functional.relu(z)
-```
-which applies a non-negative transformation (eg ReLU) to the output features ```z``` to enforce feature non-negativity. This is all we need to convert a standard CL method (e.g., SimCLR) to a non-negative version, and deliver all the magic.
 
 
 
