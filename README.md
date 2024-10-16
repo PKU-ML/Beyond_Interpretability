@@ -4,7 +4,7 @@ Official PyTorch implementation of the paper Beyond Interpretability: The Gains 
 
 
 
-##TLDR
+## TLDR
 
 This work challenges the common “accuracy-interpretability” tradeoff by demonstrating the potential of feature monosemanticity to bring clear gains in model accuracy. These gains manifest
 themselves in various aspects of “learning robustness” that we can think of: input noise, label noise, out-of-domain data, few-shot image data, and few-shot language data. The diverse set of evidence
@@ -34,7 +34,8 @@ pip3 install .[dali,umap,h5] --extra-index-url https://developer.download.nvidia
 
 ## Obtain Polysemantic/Monosemantic Representations
 
-Pretrain with the default configuration files using the following command.
+
+To attain feature monosemanticity, we conisder a intrinsic method non-negative contrastive learning (NCL) and a post-hoc method sparse autoencoder (SAE). Pretrain with the default configuration files using the following command.
 
 ### CIFAR-100 
 ```bash
@@ -76,18 +77,36 @@ python3 main_sparse.py \
 
 
 
-## Linear Evaluation
+## Noisy Linear Pobing
 
 
-After that, for linear evaluation, run the following command:
+After that, for linear evaluation with different noises, run the following command:
 
+# Simclr (Mono)
 ```bash
 python3 main_linear.py \
     --config-path scripts/linear/{dataset} \
-    --config-name simclr.yaml \
+    --config-name simclr.yaml (simclr_label_noise.yaml, simclr_gaussian_noise.yaml, simclr_uniform_noise.yaml) \
     pretrained_feature_extractor=path/to/pretrained/feature/extractor
 ```
-Here ``dataset={cifar,imagenet100}``. We use the argument ``pretrained_feature_extractor`` to configure the path of the pretrained checkpoints.
+# NCL (Mono)
+```bash
+python3 main_linear.py \
+    --config-path scripts/linear/{dataset} \
+    --config-name ncl.yaml (ncl_label_noise.yaml, ncl_gaussian_noise.yaml, ncl_uniform_noise.yaml) \
+    pretrained_feature_extractor=path/to/pretrained/feature/extractor
+```
+
+# SAE (Mono)
+```bash
+python3 main_linear.py \
+    --config-path scripts/linear/{dataset} \
+    --config-name ncl.yaml (sae_label_noise.yaml, sae_gaussian_noise.yaml, sae_uniform_noise.yaml) \
+    pretrained_feature_extractor=path/to/pretrained/feature/extractor
+```
+
+
+Here ``dataset={cifar,imagenet100}``. We use the argument ``pretrained_feature_extractor`` to configure the path of the pretrained checkpoints. We apply different noises (label noise, uniform and gaussain input noise) in different scripts. 
 
 
 ## Full finetuning
