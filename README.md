@@ -4,15 +4,17 @@ Official PyTorch implementation of the paper Beyond Interpretability: The Gains 
 
 
 
+##TLDR
 
-
+This work challenges the common “accuracy-interpretability” tradeoff by demonstrating the potential of feature monosemanticity to bring clear gains in model accuracy. These gains manifest
+themselves in various aspects of “learning robustness” that we can think of: input noise, label noise, out-of-domain data, few-shot image data, and few-shot language data. The diverse set of evidence
+strongly indicates that feature monosemanticity provides a general sense of robustness compared to polysemantic features,
 
 
 ![image](visualization.png) 
 
 
 
-![image](results.png)
 
 
 
@@ -36,18 +38,18 @@ Pretrain with the default configuration files using the following command.
 
 ### CIFAR-100 
 ```bash
-# SimCLR
+# SimCLR (Poly)
 python3 main_pretrain.py \
     --config-path scripts/pretrain/cifar \
     --config-name simclr.yaml
-# NCL
+# NCL (Mono)
 python3 main_pretrain.py \
     --config-path scripts/pretrain/cifar \
     --config-name ncl.yaml
 ```
 
-# SAE
-python3 main_pretrain.py \
+# SAE (Mono)
+python3 main_sparse.py \
     --config-path scripts/pretrain/cifar \
     --config-name sae.yaml
 ```
@@ -55,17 +57,23 @@ python3 main_pretrain.py \
 
 ### ImageNet-100
 ```bash
-# SimCLR
+# SimCLR (Poly)
 python3 main_pretrain.py \
     --config-path scripts/pretrain/imagenet-100 \
     --config-name simclr.yaml
-# NCL
+# NCL (Mono)
 python3 main_pretrain.py \
     --config-path scripts/pretrain/imagenet-100 \
     --config-name ncl.yaml
 ```
 
-By default, we use ``non_neg=rep_relu`` for CIFAR-10 and CIFAR-100 and ``non_neg=relu`` for ImageNet-100.
+# SAE (Mono)
+python3 main_sparse.py \
+    --config-path scripts/pretrain/imagenet-100 \
+    --config-name sae.yaml
+```
+
+
 
 
 ## Linear Evaluation
