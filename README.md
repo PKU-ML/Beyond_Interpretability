@@ -47,9 +47,7 @@ python3 main_pretrain.py \
 python3 main_pretrain.py \
     --config-path scripts/pretrain/cifar \
     --config-name ncl.yaml
-```
 
-```bash
 # SAE (Mono)
 python3 main_sparse.py \
     --config-path scripts/pretrain/cifar \
@@ -67,9 +65,7 @@ python3 main_pretrain.py \
 python3 main_pretrain.py \
     --config-path scripts/pretrain/imagenet-100 \
     --config-name ncl.yaml
-```
 
-```bash
 # SAE (Mono)
 python3 main_sparse.py \
     --config-path scripts/pretrain/imagenet-100 \
