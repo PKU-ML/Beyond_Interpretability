@@ -87,18 +87,13 @@ python3 main_linear.py \
     --config-path scripts/linear/{dataset} \
     --config-name simclr_clean.yaml (simclr_label_noise.yaml, simclr_gaussian_noise.yaml, simclr_uniform_noise.yaml) \
     pretrained_feature_extractor=path/to/pretrained/feature/extractor
-```
 
-```bash
 # NCL (Mono)
 python3 main_linear.py \
     --config-path scripts/linear/{dataset} \
     --config-name ncl_clean.yaml (ncl_label_noise.yaml, ncl_gaussian_noise.yaml, ncl_uniform_noise.yaml) \
     pretrained_feature_extractor=path/to/pretrained/feature/extractor
-```
 
-
-```bash
 # SAE (Mono)
 python3 main_linear.py \
     --config-path scripts/linear/{dataset} \
@@ -121,9 +116,7 @@ python3 main_linear.py \
     --config-path scripts/finetuning/{dataset} \
     --config-name simclr_clean.yaml (simclr_few_shot.yaml, simclr_label_noise.yaml) \
     pretrained_feature_extractor=path/to/pretrained/feature/extractor
-```
 
-```bash
 # NCL (Mono)
 python3 main_linear.py \
     --config-path scripts/finetuning/{dataset} \
