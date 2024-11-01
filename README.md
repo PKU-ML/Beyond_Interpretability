@@ -1,6 +1,6 @@
 # Beyond Interpretability: The Gains of Feature Monosemanticity on Model Robustness
 
-Official PyTorch implementation of the paper Beyond Interpretability: The Gains of Feature Monosemanticity on Model Robustness by Qi Zhang, [Yifei Wang*](https://yifeiwang77.com/), Jingyi Cui, Xiang Pan, Qi Lei, Stefanie Jegelka, [Yisen Wang](https://yisenwang.github.io/)
+Official PyTorch implementation of the paper [Beyond Interpretability: The Gains of Feature Monosemanticity on Model Robustness](https://arxiv.org/abs/2410.21331) by Qi Zhang, [Yifei Wang*](https://yifeiwang77.com/), Jingyi Cui, Xiang Pan, Qi Lei, Stefanie Jegelka, [Yisen Wang](https://yisenwang.github.io/)
 
 
 
