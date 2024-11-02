@@ -27,7 +27,7 @@ git clone https://github.com/PKU-ML/non_neg
 # create environment
 conda create -n non_neg python=3.8
 conda activate non_neg
-# install dependences
+# install dependencies
 cd non_neg
 pip3 install .[dali,umap,h5] --extra-index-url https://developer.download.nvidia.com/compute/redist --extra-index-url https://download.pytorch.org/whl/cu113
 ```
@@ -75,7 +75,7 @@ python3 main_sparse.py \
 
 
 
-## Noisy Linear Pobing
+## Noisy Linear Probing
 
 
 After that, for linear evaluation with different noises, run the following command:
